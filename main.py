@@ -12,14 +12,24 @@ cursor.execute("""CREATE TABLE IF NOT EXISTS Dictionary
     )""")
 
 
-end = 30
-words = []
+words = {}
 list_id = []
 
-for i in range(0, end):
-    list_id.append(random.randint(1, 61))
+while True:
+    number = random.randint(1, 59)
+    if number not in list_id:
+        list_id.append(number)
+    if len(list_id) == 10:
+        break
 
-for i in range(0, end):
-    pass
+cursor.execute("SELECT * FROM Dictionary")
+
+for i in cursor.fetchall():
+    if int(f'{i[0]}') in list_id:
+        words[f'{i[1]}'] = f'{i[2]}'
+
 
 print(list_id)
+for key, value in words.items():
+    print(f'{key}: {value}')
+
