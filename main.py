@@ -14,12 +14,13 @@ cursor.execute("""CREATE TABLE IF NOT EXISTS Dictionary
 
 words = {}
 list_id = []
+right_answers = {}
 
 while True:
-    number = random.randint(1, 59)
+    number = random.randint(1, 374)
     if number not in list_id:
         list_id.append(number)
-    if len(list_id) == 10:
+    if len(list_id) == 30:
         break
 
 cursor.execute("SELECT * FROM Dictionary")
@@ -29,7 +30,22 @@ for i in cursor.fetchall():
         words[f'{i[1]}'] = f'{i[2]}'
 
 
-print(list_id)
-for key, value in words.items():
-    print(f'{key}: {value}')
+def check_knowledge():
+    result = 0
+    for key, value in words.items():
+        print(f'{key}')
+        translate = input("Переведите:\n->")
+        if value == translate:
+            result += 1
+        else:
+            right_answers[key] = value
+    print(f'Ваш результат: {result/len(list_id)*100}%\n')
 
+
+def mistakes():
+    for key, value in right_answers.items():
+        print(f'{key}: {value}')
+
+
+check_knowledge()
+mistakes()
