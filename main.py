@@ -17,7 +17,7 @@ list_id = []
 right_answers = {}
 
 while True:
-    number = random.randint(1, 886)
+    number = random.randint(1, 893)
     if number not in list_id:
         list_id.append(number)
     if len(list_id) == 30:
