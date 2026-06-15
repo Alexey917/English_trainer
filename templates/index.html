@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>English Trainer - Smart Learning</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="stats-bar" id="stats">
+            <!-- Статистика загрузится через JS -->
+        </div>
+
+        <div class="card">
+            <div class="word-section">
+                <div class="word" id="currentWord">Loading...</div>
+                <button class="speak-btn" onclick="speakWord()" title="Listen pronunciation">
+                    🔊
+                </button>
+            </div>
+            
+            <div class="examples" id="examples"></div>
+            
+            <input type="text" 
+                   id="answer" 
+                   placeholder="Enter translation in Russian..." 
+                   autocomplete="off"
+                   onkeypress="handleKeyPress(event)">
+            
+            <div class="button-group">
+                <button class="btn-primary" onclick="checkAnswer()">✅ Check</button>
+                <button class="btn-secondary" onclick="nextWord()">➡️ Next</button>
+                <button class="btn-danger" onclick="resetWord()">🔄 Reset</button>
+            </div>
+            
+            <div id="result" class="result"></div>
+            <div id="feedback" class="feedback"></div>
+        </div>
+
+        <div class="progress-info">
+            <div class="progress-bar">
+                <div id="progressFill" class="progress-fill"></div>
+            </div>
+            <div id="progressText" class="progress-text"></div>
+        </div>
+    </div>
+
+</body>
+</html>
